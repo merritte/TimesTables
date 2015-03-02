@@ -8,11 +8,32 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate {
 
     @IBAction func sliderMoved(sender: AnyObject) {
         
         println(sliderValue)
+        
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        
+        return 20
+        
+    }
+    
+
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        
+        
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "testCell")
+        
+        let timesTable = Int(sliderValue.value * 20)
+        
+        cell.textLabel?.text = String(timesTable * indexPath.row)
+        
+        return cell
         
     }
     
